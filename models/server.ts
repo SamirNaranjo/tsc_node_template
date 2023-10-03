@@ -1,8 +1,11 @@
 import express, {Application} from 'express';
 import userRoutes from '../routes/usuario';
 import cors from 'cors'
+import dotenv from 'dotenv'
 import db from '../db/conecction';
 
+
+dotenv.config()
 
 class Server {
 
@@ -14,7 +17,7 @@ class Server {
 
 
     constructor(){
-        this.app = express();;
+        this.app = express();
         this.port = process.env.PORT || '8000';       
 
 
@@ -32,7 +35,7 @@ class Server {
             console.log('db esta online');
         
         } catch ( error ) {
-            throw new Error ();
+            throw new Error ( 'Error en la conexion a la BD' );
             
         }
     }
